@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 var UserSchema = new Schema(
     {
-        name:{type:String, required: true, max:20},
+        name:{type:String, required: true},
         password:{type:String, required:true},
         roster: [{ type: Schema.Types.ObjectId, ref: "Player" }]
     }
