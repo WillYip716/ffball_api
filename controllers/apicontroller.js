@@ -11,21 +11,22 @@ exports.player_info = function(req,res,next){
 };
 
 exports.store_league = function(req,res,next){
-    let playerlist = req.body.list;
-    var player;
-    playerlist.each((i,element)=>{
+    let playerlist = JSON.parse(JSON.stringify(req.body));
+    for(var element in playerlist){
         player = new Player({
-            name:element.name,
-            position: element.position,
-            owner:element.owner,
-            rank:element.rank,
-            auctionprice:element.auctionprice,
-            keeperyears: element.keeperyears
+            name:playerlist[element].name,
+            position: playerlist[element].position,
+            //owner:playerlist[element].owner,
+            rank:playerlist[element].rank,
+            auctionprice:playerlist[element].auctionprice,
+            keeperyears: playerlist[element].keeperyears
         }).save(function(err, savedplayer) {
             if (err) {
                 return next(err);
             }
             res.status(200);
+            return;
         });
-    });
+    }
+    
 };

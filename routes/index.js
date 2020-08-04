@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const api_controller = require('../controllers/apicontroller');
+
+
+
+router.post('/add_league', api_controller.store_league);
+
 
 module.exports = router;

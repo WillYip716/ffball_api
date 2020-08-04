@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 var PlayerSchema = new Schema(
     {
         name:{type:String, required: true},
-        position:{type:String, required:true, enum: ['QB', 'RB', 'WR','TE','K','DEF']},
-        owner:{ type: Schema.Types.ObjectId, ref: "User" },
+        position:{type:String, required:true, enum: ['QB', 'RB', 'WR','TE','K','DST']},
         rank:{type:Number, required:true},
-        auctionprice:{type:Number, required:true},
+        auctionprice:{type:Number, required:true, default:0},
         keeperyears: {type:Number, required:true, default:0}
     }
 );
